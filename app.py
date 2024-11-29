@@ -1,9 +1,13 @@
 import os
 from flask import Flask
+from src.routes.routes import Routes
 from src.common.utils import ma, db, jwt, api
+from flask_cors import CORS
 
 
 app = Flask(__name__)
+
+CORS(app)
 
 if os.environ["FLASK_ENV"] == "development":
     app.config.from_object("settings.DeveloperConfig")
@@ -19,3 +23,4 @@ ma.init_app(app)
 jwt.init_app(app)
 
 #Call the routes
+Routes(api)

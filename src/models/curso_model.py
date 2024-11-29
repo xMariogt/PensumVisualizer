@@ -7,4 +7,5 @@ class CursoModel(db.Model):
     idcurso: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     codigocurso: Mapped[str] = mapped_column(nullable=False)
     nombre: Mapped[str] = mapped_column(nullable=False)
+    obligatorio: Mapped[bool] = mapped_column(nullable=False)
     creditos: Mapped[int] = mapped_column(nullable=False)
