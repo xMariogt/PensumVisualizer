@@ -8,7 +8,12 @@ class RequisitoCursoSchema(ma.SQLAlchemyAutoSchema):
         load_instance = True
         ordered = True
         include_fk = True
+        include_relationships = True
         
+    curso_base_rel = fields.Nested("CursoSchema", exclude=("requisitos_requisito", "requisitos_posterior", "requisito_base", "asignacion_curso"))
+    requisito_rel = fields.Nested("CursoSchema",exclude=("requisitos_requisito", "requisitos_posterior", "requisito_base", "asignacion_curso"))
+    curso_posterior_rel = fields.Nested("CursoSchema", exclude=("requisitos_requisito", "requisitos_posterior", "requisito_base", "asignacion_curso"))
+
 class RequisitoCursoSchemaValidate(Schema):
     cursoid = fields.Int(required=True)
     curso_requisito = fields.Int(required=False)

@@ -12,9 +12,9 @@ class CarreraCursoSchema(ma.SQLAlchemyAutoSchema):
         include_fk = True
         include_relationships = True
         
-    curso = fields.Nested(CursoSchema)
-    carrera = fields.Nested(CarreraSchema)
-        
+    curso = fields.Nested("CursoSchema")
+    carrera = fields.Nested("CarreraSchema")
+
 class CarreraCursoSchemaValidate(Schema):
     carreraid = fields.Int(required=True)
     cursoid = fields.Int(required=True)

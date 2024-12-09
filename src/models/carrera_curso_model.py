@@ -12,5 +12,5 @@ class CarreraCursoModel(db.Model):
     carreraid: Mapped[int] = mapped_column(Integer, ForeignKey("carrera.idcarrera"), nullable=False)
     semestre: Mapped[str] = mapped_column(nullable=False)
     
-    carrera: Mapped[CarreraModel] = relationship()
-    curso: Mapped[CursoModel] = relationship()
+    carrera: Mapped[CarreraModel] = relationship("CarreraModel", backref="carreras")
+    curso: Mapped[list[CursoModel]] = relationship("CursoModel", backref="cursos")
